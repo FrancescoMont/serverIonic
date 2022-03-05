@@ -78,4 +78,8 @@ app.post('/favourites', (req,res) =>{
 app.get('/favourites', (req, res) => {
         res.status(200).json(favourites);
     });
-app.listen(5001);
+
+const port = process.env.PORT || 5001
+app.listen(port, () => {
+    console.log('app listen on port 5001')
+});
