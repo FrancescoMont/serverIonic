@@ -75,7 +75,7 @@ app.post('/favourites', (req,res) =>{
     //console.log('index',index);
 });
 
-app.get('/favourites', (req, res) => {
+app.get('/', (req, res) => {
         res.status(200).json(favourites);
     });
 
