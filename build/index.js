@@ -15,7 +15,7 @@ app.post('/favourites', (req, res) => {
     const newFavourites = Object.assign({}, req.body);
     const index = favourites.map(item => item.id);
     let newFavIndex = newFavourites.id;
-    console.log('newfav', newFavIndex);
+    //console.log('newfav',newFavIndex);
     if (index == newFavIndex) {
         favourites.splice(favourites.indexOf(newFavourites), 1);
         res.status(200).json({ message: 'favourites deleted' });
@@ -25,9 +25,12 @@ app.post('/favourites', (req, res) => {
         res.status(201).json({ message: 'Added', newFavourites });
     }
     ;
-    console.log('index', index);
+    //console.log('index',index);
 });
-app.get('/favourites', (req, res) => {
+app.get('/', (req, res) => {
     res.status(200).json(favourites);
 });
-app.listen(5001);
+const port = process.env.PORT || 5001;
+app.listen(port, () => {
+    console.log('app listen on port 5001');
+});
