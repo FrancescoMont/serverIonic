@@ -64,7 +64,7 @@ app.post('/favourites', (req,res) =>{
     const index = favourites.map(item => item.id);
     
     let newFavIndex = newFavourites.id;
-    console.log('newfav',newFavIndex);
+    //console.log('newfav',newFavIndex);
     if (index == newFavIndex){
             favourites.splice(favourites.indexOf(newFavourites),1);
             res.status(200).json({message:'favourites deleted'})
@@ -72,7 +72,7 @@ app.post('/favourites', (req,res) =>{
         favourites.push(newFavourites);
     res.status(201).json({message : 'Added', newFavourites});
     };
-    console.log('index',index);
+    //console.log('index',index);
 });
 
 app.get('/favourites', (req, res) => {
