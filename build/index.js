@@ -13,10 +13,8 @@ app.use(express_1.default.urlencoded({
 app.use(express_1.default.json());
 app.post('/favourites', (req, res) => {
     const newFavourites = Object.assign({}, req.body);
-    const index = favourites.map(item => item.id);
-    let newFavIndex = newFavourites.id;
-    //console.log('newfav',newFavIndex);
-    if (index == newFavIndex) {
+    const index = favourites.findIndex(item => item.id);
+    if (favourites.includes(newFavourites)) {
         favourites.splice(favourites.indexOf(newFavourites), 1);
         res.status(200).json({ message: 'favourites deleted' });
     }
@@ -25,12 +23,8 @@ app.post('/favourites', (req, res) => {
         res.status(201).json({ message: 'Added', newFavourites });
     }
     ;
-    //console.log('index',index);
 });
-app.get('/', (req, res) => {
+app.get('/favourites', (req, res) => {
     res.status(200).json(favourites);
 });
-const port = process.env.PORT || 5001;
-app.listen(port, () => {
-    console.log('app listen on port 5001');
-});
+app.listen(5001);

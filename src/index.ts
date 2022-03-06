@@ -1,4 +1,5 @@
 import  express  from 'express'
+import cors from 'cors'
 //import { v4 } from 'uuid';
 const app = express();
 const favourites : RootObject[] = [];
@@ -56,6 +57,7 @@ export interface DetailGame {
     image: string;
   }
 app.use(express.json());
+app.use(cors())
 
 app.post('/favourites', (req,res) =>{
     const newFavourites ={
